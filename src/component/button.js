@@ -7,11 +7,19 @@ class Button extends Component {
   }
   userDidUpVote = () => {
     const counter = this.state.upCounter;
-    this.setState({ upCounter: counter + 1 });
+    if (counter <= 20) {
+      this.setState({ upCounter: counter + 1 });
+    } else {
+      this.reset();
+    }
   };
   userDidDownVote = () => {
     const counter = this.state.downCounter;
-    this.setState({ downCounter: counter - 1 });
+    if (!counter == 0) {
+      this.setState({ downCounter: counter - 1 });
+    } else {
+      this.reset();
+    }
   };
   reset() {
     this.setState({ upCounter: 10, downCounter: 10 });
